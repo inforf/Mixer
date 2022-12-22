@@ -8,12 +8,12 @@ namespace Mixer
 {
     public partial class Form1 : Form
     {
-        List<Musica> listaMusicas1 = new List<Musica>();
-        List<Musica> listaMusicas2 = new List<Musica>();
-        List<Musica> listaMusicas3 = new List<Musica>();
-        List<Musica> listaMusicas4 = new List<Musica>();
-        string play1, play2;
-        int volume = 60;
+        private List<Musica> listaMusicas1 = new List<Musica>();
+        private List<Musica> listaMusicas2 = new List<Musica>();
+        private List<Musica> listaMusicas3 = new List<Musica>();
+        private List<Musica> listaMusicas4 = new List<Musica>();
+        private string play1, play2;
+        private int volume = 60;
 
         public Form1()
         {
@@ -28,8 +28,7 @@ namespace Mixer
             Player2.Ctlenabled = false;
             Player1.settings.volume = volume;
             Player2.settings.volume = volume;
-            label5.Text = "Volume " + Player1.settings.volume.ToString() + "%";
-            label6.Text = "Volume " + Player2.settings.volume.ToString() + "%";
+            WriteVol();
         }
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -267,8 +266,8 @@ namespace Mixer
 
         private void WriteVol()
         {
-            int vol1 = (int) Player1.settings.volume * 100 / 60;
-            int vol2 = (int) Player2.settings.volume * 100 / 60;
+            int vol1 = (int) Player1.settings.volume * 100 / volume;
+            int vol2 = (int) Player2.settings.volume * 100 / volume;
             label5.Text = "Volume " + vol1 + "%";
             label6.Text = "Volume " + vol2 + "%";
         }
